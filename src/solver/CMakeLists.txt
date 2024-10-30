@@ -2,17 +2,14 @@
 # CMakeLists.txt - CMake configuration file for swmm-solver/library
 #
 # Created: Jul 11, 2019
-# Updated: Dec  1, 2021
+# Updated: Oct 30, 2024
 #
 # Author: Michael E. Tryby
 #         US EPA ORD/CESER
 #
 
 if(APPLE)
-    set(
-      CMAKE_PREFIX_PATH
-        ../../deps/openmp-16.0.0-Darwin/
-    )
+    include(../../extern/openmp.cmake)
 endif()
 
 find_package(
@@ -91,7 +88,7 @@ target_include_directories(
 
 install(
     TARGETS
-        swmm5
+        swmm5 omp
     EXPORT
         swmm5Targets
     RUNTIME
