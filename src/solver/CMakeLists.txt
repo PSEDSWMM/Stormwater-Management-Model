@@ -9,7 +9,7 @@
 #
 
 if(APPLE)
-    include(../../extern/openmp.cmake)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/../../extern/openmp.cmake)
 endif()
 
 find_package(
