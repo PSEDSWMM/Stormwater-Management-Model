@@ -58,7 +58,7 @@ EXPORT_OUT_API int SMO_getReportVars(SMO_Handle p_handle, int **int_out, int *in
 EXPORT_OUT_API int SMO_bufferSubcatchResult(SMO_Handle p_handle, int timeIndex, int subcatchIndex, float *buffer, int bufferSize);
 EXPORT_OUT_API int SMO_bufferNodeResult(SMO_Handle p_handle, int periodIndex, int nodeIndex, float *buffer, int bufferSize);
 EXPORT_OUT_API int SMO_bufferLinkResult(SMO_Handle p_handle, int timeIndex, int linkIndex, float *buffer, int bufferSize);
-EXPORT_OUT_API int SMO_bufferSystemResult(SMO_Handle p_handle, int timeIndex, int dummyIndex, float *buffer, int bufferize);
+EXPORT_OUT_API int SMO_bufferSystemResult(SMO_Handle p_handle, int timeIndex, int dummyIndex, float *buffer, int bufferSize);
 
 EXPORT_OUT_API void SMO_freeMemory(void *array);
 EXPORT_OUT_API void SMO_clearError(SMO_Handle p_handle_in);
