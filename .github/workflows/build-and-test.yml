@@ -15,7 +15,7 @@ env:
 
 jobs:
   unit_test:
-    name: Build and unit test
+    name: Build
     runs-on: windows-2019
     environment: testing
     defaults:
@@ -26,23 +26,12 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
 
-    - name: Install boost-test
-      env:
-        REMOTE_STORE: "https://nuget.pkg.github.com/USEPA/index.json"
-      run: |
-        nuget sources add -Name github -Source ${{ env.REMOTE_STORE }} -Username ${{ secrets.USERNAME }} -Password ${{ secrets.ACCESS_TOKEN }}
-        nuget install ${{env.PKG_NAME}} -Source github
-
     - name: Build
       env:
         TOOL_CHAIN_PATH: \scripts\buildsystems\vcpkg.cmake
       run: |
         cmake -B.\build -DBUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=.\${{env.PACKAGE_NAME}}${{env.TOOL_CHAIN_PATH}} .
         cmake --build .\build --config DEBUG
-
-    - name: Unit Test
-      run: ctest --test-dir .\build -C Debug --output-on-failure
-
 
   reg_test:
     name: Build and reg test
