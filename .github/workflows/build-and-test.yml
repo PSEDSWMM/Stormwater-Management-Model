@@ -10,8 +10,6 @@ env:
   OMP_NUM_THREADS: 1
   BUILD_HOME: build
   TEST_HOME: nrtests
-  PACKAGE_NAME:  vcpkg-export-20240724-151754.1.0.0
-  PKG_NAME: vcpkg-export-20240724-151754
 
 jobs:
   unit_test:
@@ -30,7 +28,7 @@ jobs:
       env:
         TOOL_CHAIN_PATH: \scripts\buildsystems\vcpkg.cmake
       run: |
-        cmake -B.\build -DBUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=.\${{env.PACKAGE_NAME}}${{env.TOOL_CHAIN_PATH}} .
+        cmake -B.\build .
         cmake --build .\build --config DEBUG
 
   reg_test:
